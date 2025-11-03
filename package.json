@@ -1,0 +1,55 @@
+{
+  "name": "md2html",
+  "type": "module",
+  "version": "1.0.0",
+  "description": "Markdown 转 HTML 转换器 - 包含所有依赖的独立包",
+  "keywords": ["markdown", "html", "converter", "md2html", "markdown-to-html"],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/liao666brant/md2html.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    },
+    "./converter": {
+      "types": "./dist/converter.d.ts",
+      "import": "./dist/converter.js",
+      "require": "./dist/converter.cjs"
+    }
+  },
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "build:prod": "tsup --minify",
+    "dev": "tsup --watch",
+    "clean": "rm -rf dist"
+  },
+  "peerDependencies": {
+    "csstype": "^3.1.3",
+    "es-toolkit": "^1.40.0",
+    "fflate": "^0.8.2",
+    "front-matter": "^4.0.2",
+    "highlight.js": "^11.11.1",
+    "isomorphic-dompurify": "^2.30.0",
+    "marked": "^16.4.1",
+    "mermaid": "^11.12.1",
+    "postcss": "^8.5.1",
+    "reading-time": "^1.5.0"
+  },
+  "devDependencies": {
+    "tsup": "^8.3.5",
+    "typescript": "^5.9.3"
+  }
+}
