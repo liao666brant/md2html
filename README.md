@@ -4,12 +4,12 @@ Markdown 转 HTML 转换器包，提供独立的 Markdown 渲染功能。
 
 ## 📚 文档导航
 
-- 🚀 [快速开始构建](./START.md) - 如何构建这个包
+- 📦 [安装指南](./INSTALL.md) - 详细的安装步骤和系统要求
+- ⚡ [快速上手](./QUICKSTART.md) - 5分钟快速开始，代码示例
 - 💻 [使用指南](./USAGE.md) - 如何在其他项目中使用
 - 📖 [API 文档](#api-文档) - 完整的 API 参考（本文档）
-- 🔧 [构建详解](./BUILD.md) - 构建配置和故障排查
-- 🧪 [测试说明](./TEST_UI.md) - 测试界面使用方法
-- ⚡ [快速上手](./QUICKSTART.md) - 代码示例和常见用法
+- 🔧 [故障排查](./TROUBLESHOOTING.md) - 常见问题和解决方案
+- 🧪 [示例代码](./examples/) - 实际使用案例
 
 ## 特性
 
@@ -266,8 +266,34 @@ results.forEach((result, index) => {
 
 ## 依赖
 
-- `@md/core` - 核心渲染引擎
-- `@md/shared` - 共享工具和类型
+### 核心依赖（自动安装）
+
+- `@md/core` - 核心渲染引擎（已打包）
+- `@md/shared` - 共享工具和类型（已打包）
+
+### Peer Dependencies
+
+以下依赖会在安装时自动安装：
+
+- `marked` - Markdown 解析器
+- `highlight.js` - 代码高亮
+- `reading-time` - 阅读时间计算
+- `front-matter` - Front Matter 解析
+- `isomorphic-dompurify` - XSS 防护
+- `mermaid` - 图表渲染（可选）
+- `csstype` - CSS 类型定义
+- `es-toolkit` - 工具函数
+- `fflate` - 压缩库
+- `postcss` - CSS 处理
+
+## 故障排查
+
+遇到问题？查看 [故障排查指南](./TROUBLESHOOTING.md) 获取常见问题的解决方案。
+
+特别是如果遇到：
+- `TypeError: util.inherits is not a function` - [查看解决方案](./TROUBLESHOOTING.md#-问题-1-typeerror-utilinherits-is-not-a-function)
+- 导入失败 - [查看解决方案](./TROUBLESHOOTING.md#-问题-2-导入失败-cannot-find-module)
+- 构建失败 - [查看解决方案](./TROUBLESHOOTING.md#-问题-3-构建失败)
 
 ## 许可证
 

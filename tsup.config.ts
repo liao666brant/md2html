@@ -25,10 +25,8 @@ export default defineConfig({
   // 压缩代码（生产环境建议开启）
   minify: false,
 
-  // 外部依赖（只排除真正的外部依赖，不排除 workspace 包）
-  // 不列出 @md/core 和 @md/shared，它们会被打包进来
+  // 外部依赖（排除所有 npm 包，用户需要自行安装）
   external: [
-    // 只排除真正的 npm 包
     'marked',
     'highlight.js',
     'reading-time',
@@ -39,6 +37,7 @@ export default defineConfig({
     'es-toolkit',
     'fflate',
     'postcss',
+    'dompurify',
   ],
 
   // 目标环境
@@ -50,11 +49,17 @@ export default defineConfig({
   // 保留模块的导入导出结构
   treeshake: true,
 
-  // 打包所有依赖（包括 @md/* workspace 包）
+  // 打包 workspace 包，但不打包它们的依赖
   noExternal: [
     '@md/core',
     '@md/shared',
   ],
+  
+  // 平台配置
+  platform: 'node',
+  
+  // 添加 shims 来处理 Node.js 内置模块
+  shims: true,
 
   // CJS 导出配置，避免默认导出警告
   cjsInterop: true,
