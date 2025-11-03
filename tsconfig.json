@@ -1,5 +1,4 @@
 {
-  "extends": "@md/config/tsconfig.base.json",
   "compilerOptions": {
     "composite": false,
     "rootDir": "./src",
