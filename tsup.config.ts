@@ -55,4 +55,7 @@ export default defineConfig({
     '@md/core',
     '@md/shared',
   ],
+
+  // CJS 导出配置，避免默认导出警告
+  cjsInterop: true,
 })

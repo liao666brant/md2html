@@ -3,4 +3,6 @@ node_modules
 .tmp
 *.log
 .DS_Store
-*.map
+# 注意：为了支持从 GitHub 安装，我们在独立仓库中不忽略 dist
+# 在 monorepo 中可以忽略 dist，但推送到独立仓库时应包含
+# dist/

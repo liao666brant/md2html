@@ -127,4 +127,6 @@ declare class MarkdownConverter {
  */
 declare function convertMarkdownToHtml(content: string, options?: RendererInitOptions & RenderOptions): ConvertResult;
 
-export { type ConvertResult, MarkdownConverter, type ReadingStats, type RenderOptions, type RendererInitOptions, type TitleItem, convertMarkdownToHtml, MarkdownConverter as default };
+// @ts-ignore
+export = MarkdownConverter;
+export { type ConvertResult, MarkdownConverter, type ReadingStats, type RenderOptions, type RendererInitOptions, type TitleItem, convertMarkdownToHtml };

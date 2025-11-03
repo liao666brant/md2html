@@ -21,9 +21,32 @@ Markdown 转 HTML 转换器包，提供独立的 Markdown 渲染功能。
 - 💪 完整的 TypeScript 类型支持
 - 📦 支持 ESM 和 CommonJS
 
-## 构建
+## 安装
 
-在使用前，需要先构建包：
+### 从 GitHub 安装（推荐）
+
+```bash
+# 使用 npm
+npm install git+https://github.com/liao666brant/md2html.git
+
+# 使用 pnpm
+pnpm add git+https://github.com/liao666brant/md2html.git
+
+# 使用 yarn
+yarn add git+https://github.com/liao666brant/md2html.git
+```
+
+### 从 npm 安装（如果已发布）
+
+```bash
+pnpm add @zleap/md2html
+```
+
+> **注意：** 从 GitHub 安装时，包会自动执行构建（通过 `prepare` 脚本）。首次安装可能需要几分钟时间。
+
+## 本地开发构建
+
+如果你克隆了源码并想本地构建：
 
 ```bash
 cd packages/converter
@@ -32,12 +55,6 @@ pnpm build
 ```
 
 详细说明见 [START.md](./START.md)
-
-## 安装
-
-```bash
-pnpm add @md/converter
-```
 
 ## 使用方法
 
@@ -51,21 +68,21 @@ const converter = new MarkdownConverter()
 
 // 初始化配置
 converter.init({
-  primaryColor: '#3f51b5',
-  size: '16px',
+  primaryColor: `#3f51b5`,
+  size: `16px`,
   isShowLineNumber: true,
   isMacCodeBlock: false,
 })
 
 // 渲染 Markdown
-const html = converter.render('# Hello\n\nThis is **markdown**', {
+const html = converter.render(`# Hello\n\nThis is **markdown**`, {
   isCountStatus: true,
   isCiteStatus: false,
 })
 
 // 获取额外信息
-console.log(converter.readingTime)  // { chars: 28, words: 5, minutes: 1 }
-console.log(converter.titleList)     // [{ url: '#0', title: 'Hello', level: 1 }]
+console.log(converter.readingTime) // { chars: 28, words: 5, minutes: 1 }
+console.log(converter.titleList) // [{ url: '#0', title: 'Hello', level: 1 }]
 
 // 或使用 getResult() 获取完整结果
 const result = converter.getResult()
@@ -80,10 +97,10 @@ console.log(result.titleList)
 import { convertMarkdownToHtml } from '@md/converter'
 
 const { html, readingTime, titleList } = convertMarkdownToHtml(
-  '# Hello\n\nThis is **markdown**',
+  `# Hello\n\nThis is **markdown**`,
   {
-    primaryColor: '#3f51b5',
-    size: '18px',
+    primaryColor: `#3f51b5`,
+    size: `18px`,
     isCountStatus: true,
   }
 )
@@ -104,6 +121,7 @@ console.log(titleList)
 初始化渲染器，支持链式调用。
 
 **参数：**
+
 - `cssContent?: string` - 自定义 CSS 内容
 - `theme?: any` - 主题配置对象
 - `fonts?: string` - 字体族，默认为系统字体
@@ -119,6 +137,7 @@ console.log(titleList)
 渲染 Markdown 内容为 HTML。
 
 **参数：**
+
 - `content: string` - Markdown 文本内容
 - `options?: RenderOptions` - 渲染选项
   - `isCiteStatus?: boolean` - 是否显示引用，默认 `false`
@@ -162,6 +181,7 @@ function convertMarkdownToHtml(
 快速转换 Markdown 为 HTML 的函数式 API。
 
 **返回值类型：**
+
 ```typescript
 interface ConvertResult {
   html: string
@@ -174,15 +194,15 @@ interface ConvertResult {
 
 ```typescript
 interface ReadingStats {
-  chars: number    // 字符数
-  words: number    // 单词数
-  minutes: number  // 预计阅读时间（分钟）
+  chars: number // 字符数
+  words: number // 单词数
+  minutes: number // 预计阅读时间（分钟）
 }
 
 interface TitleItem {
-  url: string      // 锚点链接
-  title: string    // 标题文本
-  level: number    // 标题级别（1-6）
+  url: string // 锚点链接
+  title: string // 标题文本
+  level: number // 标题级别（1-6）
 }
 ```
 
@@ -198,9 +218,9 @@ const converter = new MarkdownConverter()
 
 converter.init({
   theme: themeMap.dark,
-  primaryColor: '#00bcd4',
-  size: '18px',
-  fonts: 'Georgia, serif',
+  primaryColor: `#00bcd4`,
+  size: `18px`,
+  fonts: `Georgia, serif`,
 })
 
 const html = converter.render(markdownContent)
@@ -210,13 +230,13 @@ const html = converter.render(markdownContent)
 
 ```typescript
 const converter = new MarkdownConverter()
-converter.init({ primaryColor: '#3f51b5' })
+converter.init({ primaryColor: `#3f51b5` })
 
 // 渲染内容
 converter.render(content)
 
 // 稍后更新主题
-converter.updateTheme({ primaryColor: '#f44336' })
+converter.updateTheme({ primaryColor: `#f44336` })
 
 // 重新渲染
 converter.render(content)
@@ -227,12 +247,12 @@ converter.render(content)
 ```typescript
 import { convertMarkdownToHtml } from '@md/converter'
 
-const documents = ['# Doc 1', '# Doc 2', '# Doc 3']
+const documents = [`# Doc 1`, `# Doc 2`, `# Doc 3`]
 
 const results = documents.map(doc =>
   convertMarkdownToHtml(doc, {
-    primaryColor: '#3f51b5',
-    size: '16px',
+    primaryColor: `#3f51b5`,
+    size: `16px`,
   })
 )
 
