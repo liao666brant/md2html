@@ -25,21 +25,9 @@ export default defineConfig({
   // 压缩代码（生产环境建议开启）
   minify: false,
 
-  // 外部依赖（只排除真正的外部依赖，不排除 workspace 包）
-  // 不列出 @md/core 和 @md/shared，它们会被打包进来
-  external: [
-    // 只排除真正的 npm 包
-    'marked',
-    'highlight.js',
-    'reading-time',
-    'front-matter',
-    'isomorphic-dompurify',
-    'mermaid',
-    'csstype',
-    'es-toolkit',
-    'fflate',
-    'postcss',
-  ],
+  // 不设置 external，将所有依赖都打包进来
+  // 这样用户不需要安装任何 peer dependencies
+  external: [],
 
   // 目标环境
   target: 'es2020',
